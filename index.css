@@ -1,0 +1,169 @@
+/* подключаем локальный шрифт  */
+@font-face{
+    font-family: "prodigy";
+    font-style: normal;
+    font-weight: 400;
+    /* используем ../ обязательно */
+    src: url(../assets/TAPELOOP.TTF)
+}
+
+body {
+    /* убираем margin(внешняя граница, элементы находятся без отступа относительно 
+    друг друга, могу ошибаться */
+    margin: 0;
+    /* исполбзуем локальный шрифт */
+     font-family: prodigy, Arial, Helvetica, sans-serif;
+     /* размер шрифта в body*/
+     font-size: 20px;
+     /* цвет шрифта */
+     color: #ff9933;
+     /* межстрочный отсуп */
+     line-height: 1.6;
+}
+
+/* пропишем для всех элементов страницы размеры box-sizing, 
+через запятую для псевдоэлементов after, before(ЧЕГО,БЛЯ?)*/
+*,
+*:after,
+*:before{
+    box-sizing: border-box;
+}
+
+/* для всех заголовков сбрасываем margin
+(я пока могу только ctrl-c/ctrl-v)
+опустим эти детали */
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+
+/* делаем контейнер по ширине фона 1920
+"контейнер" находится внутри "интро(это фон страницы?)" */
+.container{
+    /* ширина */
+    width: 100%;
+    /* максимальная ширина*/
+    max-width: 1920px;
+    /* выравниваем по центру */
+    margin: 0 auto;
+}
+
+/* intro - это фон страницы */
+.intro{
+    /* ковыряю h1 и h2 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* ширина 100% */
+    width: 100%;
+    /* высота занимает 100% экрана посетителя*/
+    height: 100vh;
+    /* адрес на img, позиция по центру, убираем повторы */
+    background: url(/assets/the_prodigy.jpg) center no-repeat;
+    /* чтобы занимала всю площадь экрана */
+    background-size: cover;
+}
+.intro_title {
+    font-size: 80 px;
+    /* большие буквы */
+    text-transform: uppercase;
+    /* выравниваем текст по центру */
+    text-align: center;
+}
+
+.intro_inner {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+ 
+/* header - это шапка */
+.header{
+    /* ширина 100% */
+    width: 100%;
+    /* делаем шапке позицию абсолют */
+   position: absolute;
+   /* прижимаем к верху */
+   top: 0;
+   left: 0;
+   right: 0;
+   /* делаем индекс побольше(ЧЕГО,БЛЯ?) 
+   поверх всего было*/
+   z-index: 1000;
+}
+
+/* эта приблуда отвечает за заголовок. header слева, ссылки справа */
+.header_inner {
+    /* flex - это сокращённое свойство, определяющее способность гибкого элемента
+     растягиваться или сжиматься для заполнения собой доступного свободного пространства */
+    display: flex;
+    /* Выравнивание главной оси с помощью justify-content */
+    justify-content: space-between;
+    /* выровнить по горизонтали по центру */
+    align-items: center;
+
+}
+
+/* Это верхний заголовок */
+.header_logo {
+    font-size: 60px;
+    font-weight: 700;
+    color: fff;
+}
+
+/* это раздел ссылок сврху */
+.nav{
+    /* размер шрифта */
+    font-size: 25px;
+    /*шо то хуйня, шо это хуйня
+    делаем весь контент заглавным*/
+    text-transform: uppercase;
+}
+
+.nav_link {
+    /* это, наверное, чтобы в одну строку? */
+    display: inline-block;
+    /* для вертикального позиционирования */
+    /* бля */
+    vertical-align: top;
+    /* мжду ссылками 20 пикселей слева и справа*/
+    margin: 20px;
+    position: relative;
+    color: fff;
+    /* текстдекорайшн уберём, чобы не подчеркивало ССЫЛКИ(капс лоск - ПИДАРАС) */
+    text-decoration: none;
+    /* чтобы цвет менялся плавно, длительность 0,5 секунды */
+    transition: color .5s linear;
+}
+
+/* псевдоэлементы after */
+.nav_link::after {
+    /* не забываем свойство content (ЗАЧЕМ???)*/
+    content: "";
+    /* ЗАААЧЕЕЕМ? */
+    display: block;
+    /* ширина */
+    width: 100%;
+    /* высота */
+    height: 3px;
+    /* этот параметр убирает полосу снизу до наведения */
+    display: none;
+    /* цвет всплывающего элемента */
+    background-color: #fce38a;
+    /* сделаем позицию absolute? получилось что полоса ушла в горизонт, 
+    поэтому выровним эту полоску относительно родителя
+    смотри .nav_link => position: relative; */
+    position: absolute;
+    /* полоска в самом низу */
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+/* цвет после наведения курсора мыши */
+.nav_link:hover {
+    color: #fce38a
+}
+
+.nav_link:hover:after {
+display: block;
+}
