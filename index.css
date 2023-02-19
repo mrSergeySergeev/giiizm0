@@ -4,7 +4,7 @@
     font-style: normal;
     font-weight: 400;
     /* используем ../ обязательно */
-    src: url(../assets/TAPELOOP.TTF)
+    src: url(./TAPELOOP.TTF);
 }
 
 body {
@@ -58,7 +58,7 @@ h1,h2,h3,h4,h5,h6{
     /* высота занимает 100% экрана посетителя*/
     height: 100vh;
     /* адрес на img, позиция по центру, убираем повторы */
-    background: url(/assets/the_prodigy.jpg) center no-repeat;
+    background: url(./the_prodigy.jpg) center no-repeat;
     /* чтобы занимала всю площадь экрана */
     background-size: cover;
 }
